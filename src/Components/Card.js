@@ -4,20 +4,33 @@ import html2canvas from 'html2canvas';
 import { useRef } from "react";
 // import { exportComponentAsJPEG, exportComponentAsPDF, exportComponentAsPNG } from 'react-component-export-image';
 
-function Card(props) {
+const Card = (props) =>{
 
   const componentRef = useRef();
 
   const handleCaptureClick = async () => {
-    const canvas = await html2canvas(document.body);
-    const dataURL = canvas.toDataURL('image/png');
-    downloadjs(dataURL, 'download.png', 'image/png');
+    // const canvas = await html2canvas(document.body);
+    // const dataURL = canvas.toDataURL('image/png');
+    // downloadjs(dataURL, 'download.png', 'image/png');
+
+    console.log("download call")
+    const element = document.getElementById('print'),
+    canvas = await html2canvas(element),
+    data = canvas.toDataURL('image/jpg'),
+    link = document.createElement('a');
+
+    link.href = data;
+    link.download = 'downloaded-image.jpg';
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   return (
     // <React.Fragment>
     //   <ComponentToPrint ref={componentRef} />
-    <div class="max-w-sm rounded overflow-hidden shadow-lg" >
+    <div class="max-w-sm rounded overflow-hidden shadow-lg" id="print" >
       <div class="px-6 py-4">
         <div class="font-bold text-xl mb-2">{props.name}</div>
         <p class="text-gray-700 text-base">
