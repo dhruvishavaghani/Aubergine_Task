@@ -34,7 +34,8 @@ const Home = () =>{
 
     return(
         <div>
-             <div><ul class="flex">
+            <div>
+            <ul class="flex mt-4 ml-4">
             <li class="mr-3">
     
                 <input  placeholder="search country" 
@@ -43,7 +44,7 @@ const Home = () =>{
             </li>
             <li class="mr-3">
             <Dropdown onSelect={handleSelect}>
-                <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                <Dropdown.Toggle variant="secondary" id="dropdown-basic">
                 state-province
                 </Dropdown.Toggle>
 
@@ -57,7 +58,7 @@ const Home = () =>{
     
         </ul>
         </div>
-            <h1>UNIVERSITIES</h1>
+            <div class="flex justify-center font-bold text-4xl">UNIVERSITIES</div>
             <div class="container m-auto grid grid-cols-3 gap-4">
                 {
                     profile.map((data,id) => (
