@@ -1,8 +1,19 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
+
+import Home from "./Pages/Home";
 
 function App() {
   return (
-    
-    <h1>HEllO</h1>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+      </Routes>
+    </BrowserRouter>  
   );
 }
 
