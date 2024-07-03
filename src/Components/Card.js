@@ -36,6 +36,9 @@ const Card = (props) =>{
         <p class="text-gray-700 text-base">
           {props.country}
         </p>
+        <p class="text-gray-700 text-base">
+          Visit site {props.web_pages}
+        </p>
       </div>
       <div class="px-6 pt-4 pb-2">
         <button class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" 

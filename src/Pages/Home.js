@@ -24,7 +24,7 @@ const Home = () =>{
                 const data = res.data
                 
                 setProfile(data)
-                console.log(data[0].web_pages[0])
+                console.log("profile ",profile)
             });}
             catch(error){
                 console.log("error "+error)
@@ -67,8 +67,8 @@ const Home = () =>{
             <div class="flex justify-center font-bold text-4xl">UNIVERSITIES</div>
             <div class="container m-auto grid grid-cols-3 gap-4">
                 {
-                    profile.map((data,id) => (
-                        <Card name={data.name} country={data.country} />
+                    profile.map((data,key) => (
+                        <Card name={data.name} country={data.country} url={data.web_pages}/>
                     ))
                 }
             </div>
