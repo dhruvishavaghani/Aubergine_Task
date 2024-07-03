@@ -6,14 +6,19 @@ import Dropdown from 'react-bootstrap/Dropdown';
 const Home = () =>{
 
     const [profile,setProfile] = useState([{}])
-    const [country,setCountry] = useState(null)
-    const [state,setState]  = useState(null)
+    const [country,setCountry] = useState('')
+    const [state,setState]  = useState('')
     
     useEffect(()=>{
         async function fetchData(){
             try{
+                
+                let url = `http://universities.hipolabs.com/search?name=${state}`;
+                if (country) {
+                  url += `&country=${country}`;
+                }
 
-                const response = await axios.get(`http://universities.hipolabs.com/search?name=${state}&country=${country}`)
+                const response = await axios.get(url)
                 .then((res) => {
                 
                 const data = res.data
