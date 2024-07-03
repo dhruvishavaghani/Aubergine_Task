@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react"
 import Card from "../Components/Card";
 import axios from "axios";
-// import TextField from "@mui/material/TextField";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 const Home = () =>{
 
     const [profile,setProfile] = useState([{}])
     const [country,setCountry] = useState('turkey')
-    const [state,setSatate]  = useState('middle')
+    const [state,setState]  = useState('middle')
     
     useEffect(()=>{
         async function fetchData(){
             try{
-                console.log("useeffect called")
+                console.log("useeffect called ",state)
                 const response = await axios.get(`http://universities.hipolabs.com/search?name=${state}&country=${country}`)
                 .then((res) => {
                 
@@ -30,6 +30,11 @@ const Home = () =>{
         fetchData();
     },[country,state])
 
+    const handleSelect = (eventKey) => {
+        setState(eventKey);
+        console.log("handleselect called ")
+      };
+
     return(
         <div>
              <div><ul class="flex">
@@ -40,7 +45,17 @@ const Home = () =>{
                     className="outline outline-2 outline-black" />
             </li>
             <li class="mr-3">
+            <Dropdown onSelect={handleSelect}>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                state-province
+                </Dropdown.Toggle>
 
+        <Dropdown.Menu>
+            <Dropdown.Item eventKey="middle">Middle</Dropdown.Item>
+            <Dropdown.Item >Another action</Dropdown.Item>
+            <Dropdown.Item >Something else</Dropdown.Item>
+        </Dropdown.Menu>
+        </Dropdown>
             </li>
     
         </ul>
