@@ -6,12 +6,13 @@ import Dropdown from 'react-bootstrap/Dropdown';
 const Home = () =>{
 
     const [profile,setProfile] = useState([{}])
-    const [country,setCountry] = useState('turkey')
-    const [state,setState]  = useState('middle')
+    const [country,setCountry] = useState(null)
+    const [state,setState]  = useState(null)
     
     useEffect(()=>{
         async function fetchData(){
             try{
+
                 const response = await axios.get(`http://universities.hipolabs.com/search?name=${state}&country=${country}`)
                 .then((res) => {
                 
@@ -40,7 +41,7 @@ const Home = () =>{
     
                 <input  placeholder="search country" 
                     onChange={(e)=>{setCountry(e.target.value)}}
-                    className="outline outline-2 outline-black" />
+                    className="w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-400" />
             </li>
             <li class="mr-3">
             <Dropdown onSelect={handleSelect}>
