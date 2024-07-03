@@ -24,7 +24,7 @@ const Home = () =>{
                 const data = res.data
                 
                 setProfile(data)
-                console.log(data[0].web_pages[0])
+                console.log("profile ",profile)
             });}
             catch(error){
                 console.log("error "+error)
@@ -46,7 +46,7 @@ const Home = () =>{
     
                 <input  placeholder="search country" 
                     onChange={(e)=>{setCountry(e.target.value)}}
-                    className="w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-400" />
+                    className="w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-gray-400 outline outline-2 outline-black" />
             </li>
             <li class="mr-3">
             <Dropdown onSelect={handleSelect}>
@@ -67,8 +67,8 @@ const Home = () =>{
             <div class="flex justify-center font-bold text-4xl">UNIVERSITIES</div>
             <div class="container m-auto grid grid-cols-3 gap-4">
                 {
-                    profile.map((data,id) => (
-                        <Card name={data.name} country={data.country} />
+                    profile.map((data,key) => (
+                        <Card name={data.name} country={data.country} url={data.web_pages}/>
                     ))
                 }
             </div>
