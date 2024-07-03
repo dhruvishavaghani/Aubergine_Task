@@ -12,15 +12,13 @@ const Home = () =>{
     useEffect(()=>{
         async function fetchData(){
             try{
-                console.log("useeffect called ",state)
                 const response = await axios.get(`http://universities.hipolabs.com/search?name=${state}&country=${country}`)
                 .then((res) => {
                 
                 const data = res.data
-                console.log("res ",data)
                 
                 setProfile(data)
-                console.log("profile ",profile)
+                console.log(data[0].web_pages[0])
             });}
             catch(error){
                 console.log("error "+error)
@@ -32,7 +30,6 @@ const Home = () =>{
 
     const handleSelect = (eventKey) => {
         setState(eventKey);
-        console.log("handleselect called ")
       };
 
     return(
@@ -46,14 +43,14 @@ const Home = () =>{
             </li>
             <li class="mr-3">
             <Dropdown onSelect={handleSelect}>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                <Dropdown.Toggle variant="primary" id="dropdown-basic">
                 state-province
                 </Dropdown.Toggle>
 
         <Dropdown.Menu>
             <Dropdown.Item eventKey="middle">Middle</Dropdown.Item>
-            <Dropdown.Item >Another action</Dropdown.Item>
-            <Dropdown.Item >Something else</Dropdown.Item>
+            <Dropdown.Item >East</Dropdown.Item>
+            <Dropdown.Item >West</Dropdown.Item>
         </Dropdown.Menu>
         </Dropdown>
             </li>
@@ -64,7 +61,7 @@ const Home = () =>{
             <div class="container m-auto grid grid-cols-3 gap-4">
                 {
                     profile.map((data,id) => (
-                        <Card name={data.name} country={data.country}/>
+                        <Card name={data.name} country={data.country} />
                     ))
                 }
             </div>
