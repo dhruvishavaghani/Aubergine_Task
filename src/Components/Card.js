@@ -37,7 +37,7 @@ const Card = (props) =>{
           {props.country}
         </p>
         <p class="text-gray-700 text-base">
-          Visit site {props.url}
+          Visit site : {props.url}
         </p>
       </div>
       <div class="px-6 pt-4 pb-2">
