@@ -1,8 +1,22 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  BrowserRouter,
+} from "react-router-dom";
+
+import Home from "./Pages/Home";
+import Navbar from "./Components/Navbar";
 
 function App() {
   return (
     
-    <h1>HEllO</h1>
+    <BrowserRouter>
+    {/* <Navbar/> */}
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+      </Routes>
+    </BrowserRouter>  
   );
 }
 
